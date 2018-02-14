@@ -1,0 +1,25 @@
+{
+  "name": "login",
+  "description": "Login App",
+  "main": "./",
+  "authors": [
+    "[object Object]"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "login",
+    "authentication"
+  ],
+  "homepage": "https://github.com/colo/node-mngr-ui",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "cryptojslib": "^3.1.2"
+  }
+}

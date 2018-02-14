@@ -1,0 +1,54 @@
+<script type="text/html" id="hypervisors_x_panel_content-template">
+
+	<p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
+
+		
+	<table id="hypervisors-table" class="table table-striped"> 
+		<thead>
+			<tr class="headings">
+				<th>
+					<input class="flat" type="checkbox" id="data_chkbox" data-bind="click: function(){console.log($element); return pagination.toggle_all($element);}">
+				</th>
+				<th>Servers</th>
+<!--
+				<th></th>
+-->
+			</tr>
+		</thead>
+		
+		<tbody data-bind="foreach: hypervisors">
+			<tr data-bind="attr: {'class': function(){ if(($index % 2)  == 0){ return 'even pointer'; } else { return 'odd pointer';} }}">
+				<td class="a-center">
+						<input name="data_chkbox" type="checkbox" class="flat" data-bind="attr: {'id': 'data_chkbox'+$index(), value: $data}, click: function(){console.log($element); return $parent.pagination.toggle($element)}">
+				</td>
+				<td data-bind="text: host"></td>
+<!--
+				<td>
+				</td>
+-->
+			</tr>
+			
+			
+		</tbody>
+	</table>
+	
+	
+	<div class="pull-right">
+		<button type="button" class="btn btn-default" aria-label="First" data-bind="click:  function(data, event) { load_page(URI, pagination.links().first) }, disable: pagination.disabled.first">
+			<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+		</button>
+		
+		<button type="button" class="btn btn-default" aria-label="Prev" data-bind="click:  function(data, event) { load_page(URI, pagination.links().prev) }, disable: pagination.disabled.prev ">
+			<span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+		</button>
+		
+		<button type="button" class="btn btn-default" aria-label="Next" data-bind="click:  function(data, event) { load_page(URI, pagination.links().next) }, disable: pagination.disabled.next ">
+			<span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+		</button>
+		
+		<button type="button" class="btn btn-default" aria-label="Last" data-bind="click:  function(data, event) { load_page(URI, pagination.links().last) }, disable: pagination.disabled.last">
+			<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
+		</button>
+		
+	</div>
+</script>

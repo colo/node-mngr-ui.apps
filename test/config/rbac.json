@@ -1,0 +1,16 @@
+{
+  "roles":[
+	{
+	  "id": "user",
+	  "permissions":["abmView"]
+	}
+  ],
+  "permissions":[
+	{
+	  "id": "abmView",
+	  "name": "",
+	  "operation": "view",
+	  "resource": "abm"
+	}
+  ]
+}

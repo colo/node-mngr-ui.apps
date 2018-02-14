@@ -1,0 +1,169 @@
+<script type="text/html" id="zones_x_panel_content-template">
+	<!-- dataTable -->
+<div id="zones-datatable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+	<div class="row">
+		<div class="col-sm-6">
+			<div class="dataTables_length" id="zones-datatable_length">
+				<label>Show 
+					<select name="zones-datatable_length" aria-controls="zones-datatable" class="form-control input-sm">
+						<option value="10">10</option>
+						<option value="25">25</option>
+						<option value="50">50</option>
+						<option value="100">100</option>
+					</select> 
+				entries
+				</label>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div id="zones-datatable_filter" class="dataTables_filter">
+				<label>Search:
+					<input type="search" class="form-control input-sm" placeholder="" aria-controls="zones-datatable">
+				</label>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-12">
+			<table id="zones-datatable" class="table table-striped table-bordered dataTable no-footer" role="grid" aria-describedby="zones-datatable_info">
+				<thead>
+					<tr role="row">
+						<th>
+							<input class="flat" type="checkbox" id="data_chkbox" data-bind="click: function(){console.log($element); return pagination.toggle_all($element);}">
+						</th>
+						<th class="sorting_asc" tabindex="0" aria-controls="zones-datatable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Zones</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: zones">
+					<tr data-bind="attr: {'class': function(){ if(($index % 2)  == 0){ return 'even'; } else { return 'odd';} }}">
+						<td class="a-center">
+								<input name="data_chkbox" type="checkbox" class="flat" data-bind="attr: {'id': 'data_chkbox'+$index(), value: $data}, click: function(){console.log($element); return $parent.pagination.toggle($element)}">
+						</td>
+						<td data-bind="text: $data" class="sorting_1"></td>
+
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-5">
+			<div class="dataTables_info" id="zones-datatable_info" role="status" aria-live="polite">
+				Showing 1 to 1 of 1 entries
+			</div>
+		</div>
+		<div class="col-sm-7">
+			<div class="dataTables_paginate paging_full" id="zones-datatable_paginate">
+				<ul class="pagination">
+					<li id="zones-datatable_first" data-bind="
+							attr: {
+								'class': (pagination.disabled.first()) ? 'paginate_button first disabled' : 'paginate_button first'
+							}
+					">
+						<a href="#" aria-controls="zones-datatable" data-dt-idx="0" tabindex="0" data-bind="
+							click:  function(data, event) {
+								if(!pagination.disabled.first())
+									load_page(URI, pagination.links().first)
+							},
+					">First</a>
+					</li>
+					<li id="zones-datatable_previous" data-bind="
+							attr: {
+								'class': (pagination.disabled.prev()) ? 'paginate_button previous disabled' : 'paginate_button previous'
+							}
+					">
+						<a href="#" aria-controls="zones-datatable" data-dt-idx="1" tabindex="0" data-bind="
+							click:  function(data, event) {
+								if(!pagination.disabled.prev())
+									load_page(URI, pagination.links().prev)
+							},
+					">Previous</a>
+					</li>
+					<li id="zones-datatable_next" data-bind="
+							attr: {
+								'class': (pagination.disabled.next()) ? 'paginate_button next disabled' : 'paginate_button next',
+							}
+					">
+						<a href="#" aria-controls="zones-datatable" data-dt-idx="2" tabindex="0" data-bind="
+							click: function(data, event) {
+								if(!pagination.disabled.next())
+									load_page(URI, pagination.links().next) 
+							},
+					">Next</a>
+					</li>
+					<li id="zones-datatable_last" data-bind="
+							attr: {
+								'class': (pagination.disabled.last()) ? 'paginate_button last disabled' : 'paginate_button last',
+							}
+					">
+						<a href="#" aria-controls="zones-datatable" data-dt-idx="3" tabindex="0" data-bind="
+							disable: pagination.disabled.last(),
+							click: function(data, event) {
+								if(!event.target.disabled)
+									load_page(URI, pagination.links().last)
+							},
+					">Last</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- /dataTable -->
+
+<!-- custom -->
+<!--
+	<p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
+
+	<div class="table-responsive"> 
+		
+		<table id="zones-table" class="table table-striped"> 
+			<thead>
+				<tr class="headings">
+					<th>
+						<input class="flat" type="checkbox" id="data_chkbox" data-bind="click: function(){console.log($element); return pagination.toggle_all($element);}">
+					</th>
+					<th class="column-title">Zones</th>
+					<th></th>
+				</tr>
+			</thead>
+			
+			<tbody data-bind="foreach: zones">
+				<tr data-bind="attr: {'class': function(){ if(($index % 2)  == 0){ return 'even pointer'; } else { return 'odd pointer';} }}">
+					<td class="a-center">
+							<input name="data_chkbox" type="checkbox" class="flat" data-bind="attr: {'id': 'data_chkbox'+$index(), value: $data}, click: function(){console.log($element); return $parent.pagination.toggle($element)}">
+					</td>
+					<td data-bind="text: $data"></td>
+					<td>
+					</td>
+				</tr>
+				
+				
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="pull-right">
+		<button type="button" class="btn btn-default" aria-label="First" data-bind="click:  function(data, event) { load_page(URI, pagination.links().first) }, disable: pagination.disabled.first">
+			<span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+		</button>
+		
+		<button type="button" class="btn btn-default" aria-label="Prev" data-bind="click:  function(data, event) { load_page(URI, pagination.links().prev) }, disable: pagination.disabled.prev ">
+			<span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+		</button>
+		
+		<button type="button" class="btn btn-default" aria-label="Next" data-bind="click:  function(data, event) { load_page(URI, pagination.links().next) }, disable: pagination.disabled.next ">
+			<span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+		</button>
+		
+		<button type="button" class="btn btn-default" aria-label="Last" data-bind="click:  function(data, event) { load_page(URI, pagination.links().last) }, disable: pagination.disabled.last">
+			<span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
+		</button>
+		
+	</div>
+-->
+<!-- /custom -->
+</script>

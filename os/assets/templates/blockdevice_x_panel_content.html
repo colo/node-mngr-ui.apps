@@ -1,0 +1,35 @@
+<script type="text/html" id="blockdevice_x_panel_content-template">
+	<table class="" style="width:100%">
+		<tr>
+			<th style="width:37%;">
+				<p data-bind="text: device.name">Device</p>
+			</th>
+			<th>
+				<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+					<p class="">Partition</p>
+				</div>
+				<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+					<p class="">Size Usage</p>
+				</div>
+			</th>
+		</tr>
+		<tr>
+			<td>
+				<canvas height="140" width="140" style="margin: 15px 10px 10px 0" data-bind="load_chart: device.name,attr: {id: 'blockdevice_'+device.name}"></canvas>
+			</td>
+			<td>
+				<table class="tile_info" data-bind="foreach: { data: device.partitions, as: 'part' }">
+					<tr>
+						<td>
+							<p>
+								<i data-bind="attr: {class: 'fa fa-square '+part.color }"></i>
+								<!-- ko text: part.name --><!-- /ko -->
+							</p>
+						</td>
+						<td data-bind="text: part.percentage+'%'"></td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</script>
